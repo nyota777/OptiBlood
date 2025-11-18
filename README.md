@@ -1,6 +1,15 @@
-# 🩸 OptiBlood Backend API
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/fY9FAi32)
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19909029&assignment_repo_type=AssignmentRepo)
+[Git/Github CheatSheet](https://philomatics.com/git-cheatsheet-release)
 
-Complete Node.js + Express + PostgreSQL backend for OptiBlood - Blood Donation and Shortage Prediction System.
+**Name:** Arthur Nyota  
+**Admission Number:** 150830
+
+---
+
+# 🩸 OptiBlood - Blood Donation Management System
+
+Complete full-stack blood donation and shortage prediction system with ML integration, admin dashboard, donor management, and real-time predictions.
 
 ## 📋 Table of Contents
 
@@ -10,7 +19,7 @@ Complete Node.js + Express + PostgreSQL backend for OptiBlood - Blood Donation a
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Database Setup](#database-setup)
-- [Running the Server](#running-the-server)
+- [Running the Application](#running-the-application)
 - [API Endpoints](#api-endpoints)
 - [ML Model Integration](#ml-model-integration)
 - [Email Alerts](#email-alerts)
@@ -18,6 +27,7 @@ Complete Node.js + Express + PostgreSQL backend for OptiBlood - Blood Donation a
 
 ## ✨ Features
 
+### Backend Features
 - ✅ **Full CRUD Operations** for donors, donations, inventory, predictions, and alerts
 - 🔐 **JWT Authentication** with bcrypt password hashing
 - 🤖 **Machine Learning Integration** for blood shortage predictions
@@ -26,9 +36,23 @@ Complete Node.js + Express + PostgreSQL backend for OptiBlood - Blood Donation a
 - 📊 **PostgreSQL Database** with Sequelize ORM
 - 🔄 **Real-time Updates** ready for React frontend
 - 🌐 **CORS Enabled** for seamless frontend integration
+- 👥 **Admin Dashboard** with comprehensive analytics
+- 📈 **Donor Availability Prediction** using KNBTS rules
+
+### Frontend Features
+- 🎨 **Modern UI** with React + TypeScript + Vite
+- 📱 **Fully Responsive** design
+- 🌓 **Dark Mode** support
+- 📊 **Real-time Charts** and analytics
+- 🔔 **Toast Notifications** for user feedback
+- 🛡️ **Protected Routes** with authentication
+- 📧 **Email Management** interface
+- 📅 **Donation Scheduling** system
+- ⚙️ **Settings & Profile** management
 
 ## 🛠️ Tech Stack
 
+### Backend
 - **Runtime**: Node.js
 - **Framework**: Express.js
 - **Database**: PostgreSQL
@@ -36,89 +60,131 @@ Complete Node.js + Express + PostgreSQL backend for OptiBlood - Blood Donation a
 - **Authentication**: JWT + bcrypt
 - **Email**: Nodemailer
 - **Scheduling**: node-cron
-- **ML**: Python (for predictions)
+- **ML**: Python (scikit-learn, numpy, pandas)
+
+### Frontend
+- **Framework**: React 18
+- **Language**: TypeScript
+- **Build Tool**: Vite
+- **UI Components**: Shadcn/UI
+- **Charts**: Recharts
+- **Icons**: Lucide React
+- **Notifications**: Sonner
+- **Routing**: React Router
 
 ## 📁 Project Structure
 
 ```
-backend/
-├── config/
-│   └── db.js                 # Database configuration
-├── models/
-│   ├── User.js               # Hospital staff user model
-│   ├── Donor.js              # Blood donor model
-│   ├── DonationRecord.js     # Donation history model
-│   ├── Inventory.js          # Blood inventory model
-│   ├── Prediction.js         # ML prediction results model
-│   ├── Alert.js              # System alerts model
-│   └── index.js              # Model associations
-├── routes/
-│   ├── authRoutes.js         # Authentication endpoints
-│   ├── donorRoutes.js        # Donor CRUD endpoints
-│   ├── donationRoutes.js     # Donation CRUD endpoints
-│   ├── inventoryRoutes.js    # Inventory CRUD endpoints
-│   ├── predictionRoutes.js   # ML prediction endpoints
-│   └── alertRoutes.js        # Alert management endpoints
-├── middleware/
-│   └── authMiddleware.js     # JWT authentication middleware
-├── utils/
-│   ├── emailService.js       # Email notification service
-│   └── runPythonModel.js     # Python ML model integration
-├── scheduler/
-│   └── alertScheduler.js     # Scheduled alert checks
-├── ml/
-│   └── predict_shortage.py   # Python ML prediction model
-├── .env                       # Environment variables (create from .env.example)
-├── package.json              # Dependencies
-├── server.js                 # Main server file
-└── README.md                 # This file
+optiblood-system-ui/
+├── backend/
+│   ├── config/
+│   │   ├── db.js                 # Database configuration
+│   │   └── passport.js            # Passport.js config
+│   ├── models/
+│   │   ├── User.js                # Hospital staff user model
+│   │   ├── Donor.js               # Blood donor model
+│   │   ├── DonationRecord.js      # Donation history model
+│   │   ├── Inventory.js            # Blood inventory model
+│   │   ├── Prediction.js          # ML prediction results model
+│   │   ├── Alert.js               # System alerts model
+│   │   ├── EmailHistory.js        # Email history model
+│   │   ├── DonationSchedule.js    # Donation scheduling model
+│   │   └── index.js               # Model associations
+│   ├── routes/
+│   │   ├── authRoutes.js          # Authentication endpoints
+│   │   ├── donorRoutes.js         # Donor CRUD endpoints
+│   │   ├── donationRoutes.js      # Donation CRUD endpoints
+│   │   ├── inventoryRoutes.js     # Inventory CRUD endpoints
+│   │   ├── predictionRoutes.js    # ML prediction endpoints
+│   │   ├── alertRoutes.js         # Alert management endpoints
+│   │   ├── emailRoutes.js         # Email management endpoints
+│   │   ├── scheduleRoutes.js      # Donation scheduling endpoints
+│   │   ├── dashboardRoutes.js     # Dashboard data endpoints
+│   │   ├── reportsRoutes.js       # Reports & analytics endpoints
+│   │   └── adminRoutes.js         # Admin dashboard endpoints
+│   ├── middleware/
+│   │   └── authMiddleware.js      # JWT authentication middleware
+│   ├── utils/
+│   │   ├── emailService.js        # Email notification service
+│   │   ├── runPythonModel.js      # Python ML model integration
+│   │   └── runDonorPrediction.js  # Donor availability prediction
+│   ├── scheduler/
+│   │   └── alertScheduler.js      # Scheduled alert checks
+│   ├── ml/
+│   │   ├── predict_shortage.py   # Python ML prediction model
+│   │   ├── predict_donor_availability.py  # Donor prediction model
+│   │   ├── requirements.txt       # Python dependencies
+│   │   └── shortage_prediction_model.pkl  # Trained ML model
+│   ├── .env                       # Environment variables
+│   ├── package.json               # Dependencies
+│   └── server.js                  # Main server file
+├── src/
+│   ├── components/
+│   │   ├── auth/                  # Authentication components
+│   │   ├── dashboards/            # Dashboard components
+│   │   ├── modules/               # Feature modules
+│   │   ├── layout/                # Layout components
+│   │   └── ui/                    # UI components (Shadcn)
+│   ├── services/
+│   │   └── api.js                 # API service layer
+│   ├── api/
+│   │   └── predictions.ts        # Prediction API
+│   ├── App.tsx                    # Main app component
+│   ├── main.tsx                   # Entry point
+│   └── index.css                  # Global styles
+├── package.json                   # Frontend dependencies
+├── vite.config.ts                 # Vite configuration
+└── README.md                      # This file
 ```
 
 ## 📦 Installation
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js (v16 or higher)
 - PostgreSQL (v12 or higher)
-- Python 3 (for ML model)
+- Python 3.8+ (for ML model)
 - npm or yarn
 
 ### Steps
 
-1. **Clone or navigate to the backend directory**
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/nyota777/OptiBlood.git
+cd OptiBlood
+```
+
+2. **Install Backend Dependencies**
 
 ```bash
 cd backend
-```
-
-2. **Install Node.js dependencies**
-
-```bash
 npm install
 ```
 
-3. **Install Python (if not already installed)**
+3. **Install Frontend Dependencies**
 
-Make sure Python 3 is installed and accessible via `python` or `python3` command.
+```bash
+cd ..
+npm install
+```
+
+4. **Install Python Dependencies**
+
+```bash
+cd backend/ml
+pip install -r requirements.txt
+```
 
 ## ⚙️ Configuration
 
-1. **Create environment file**
+1. **Create backend environment file**
 
-Create a `.env` file in the backend root directory:
-
-```bash
-# Copy from example (if exists) or create manually
-cp .env.example .env
-```
-
-2. **Configure environment variables**
-
-Edit `.env` file with your settings:
+Create a `.env` file in the `backend/` directory:
 
 ```env
 # Server Configuration
-PORT=5000
+PORT=5001
 NODE_ENV=development
 
 # Database Configuration
@@ -146,6 +212,14 @@ ALERT_CRON_SCHEDULE=0 */6 * * *
 FRONTEND_URL=http://localhost:3000
 ```
 
+2. **Create frontend environment file (optional)**
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_API_URL=http://localhost:5001/api
+```
+
 ### 📧 Gmail Setup for Email Notifications
 
 To use Gmail for sending emails:
@@ -156,6 +230,8 @@ To use Gmail for sending emails:
    - Under "2-Step Verification", click on "App passwords"
    - Generate a new app password for "Mail"
    - Use this password in `EMAIL_PASS` variable
+
+See `backend/EMAIL_SETUP_GUIDE.md` for detailed instructions.
 
 ## 🗄️ Database Setup
 
@@ -186,34 +262,47 @@ GRANT ALL PRIVILEGES ON DATABASE optiblood_db TO optiblood_user;
 
 Update the database credentials in `.env` file to match your existing setup.
 
-## 🚀 Running the Server
+## 🚀 Running the Application
 
-### Development Mode (with auto-reload)
+### Development Mode
+
+1. **Start Backend Server**
 
 ```bash
+cd backend
 npm run dev
 ```
 
-### Production Mode
+The backend will start on `http://localhost:5001`
+
+2. **Start Frontend Development Server**
 
 ```bash
+# From root directory
+npm run dev
+```
+
+The frontend will start on `http://localhost:3000`
+
+### Production Mode
+
+1. **Build Frontend**
+
+```bash
+npm run build
+```
+
+2. **Start Backend**
+
+```bash
+cd backend
 npm start
 ```
 
-The server will start on `http://localhost:5000` (or the PORT specified in .env)
+### Default Admin Credentials
 
-### Verify Server is Running
-
-Visit `http://localhost:5000` in your browser. You should see:
-
-```json
-{
-  "success": true,
-  "message": "🩸 OptiBlood API is running",
-  "version": "1.0.0",
-  "endpoints": { ... }
-}
-```
+- **Email**: `admin@gmail.com`
+- **Password**: `admin1234`
 
 ## 📡 API Endpoints
 
@@ -232,6 +321,7 @@ Visit `http://localhost:5000` in your browser. You should see:
 | POST | `/api/donors` | Add new donor | Yes |
 | PUT | `/api/donors/:id` | Update donor info | Yes |
 | DELETE | `/api/donors/:id` | Remove donor | Yes |
+| GET | `/api/predictions/predict-donor/:id` | Predict donor availability | Yes |
 
 ### Donations
 
@@ -248,6 +338,7 @@ Visit `http://localhost:5000` in your browser. You should see:
 | POST | `/api/inventory` | Add inventory | Yes |
 | PUT | `/api/inventory/:id` | Update inventory | Yes |
 | DELETE | `/api/inventory/:id` | Delete inventory | Yes |
+| POST | `/api/inventory/withdraw` | Withdraw stock | Yes |
 
 ### Predictions
 
@@ -256,55 +347,30 @@ Visit `http://localhost:5000` in your browser. You should see:
 | GET | `/api/predictions` | Get prediction history | Yes |
 | POST | `/api/predict-shortage` | Run ML prediction | Yes |
 
-### Alerts
+### Admin Dashboard
 
 | Method | Endpoint | Description | Auth Required |
 |--------|----------|-------------|---------------|
-| GET | `/api/alerts` | Fetch alerts | Yes |
-| POST | `/api/alerts` | Create alert | Yes |
-| PUT | `/api/alerts/:id` | Mark as notified | Yes |
-| DELETE | `/api/alerts/:id` | Delete alert | Yes |
-
-### Example API Requests
-
-**Register User**
-```bash
-curl -X POST http://localhost:5000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "John Doe",
-    "email": "john@hospital.com",
-    "password": "password123",
-    "hospital_name": "City General Hospital",
-    "role": "admin"
-  }'
-```
-
-**Login**
-```bash
-curl -X POST http://localhost:5000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "john@hospital.com",
-    "password": "password123"
-  }'
-```
-
-**Add Donor (with JWT token)**
-```bash
-curl -X POST http://localhost:5000/api/donors \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -d '{
-    "name": "Jane Smith",
-    "blood_type": "O+",
-    "contact": "555-1234"
-  }'
-```
+| GET | `/api/admin/kpis` | Get KPI metrics | Yes (Admin) |
+| GET | `/api/admin/stock` | Get stock data | Yes (Admin) |
+| GET | `/api/admin/forecast` | Get forecast data | Yes (Admin) |
+| GET | `/api/admin/donors/available` | Get available donors | Yes (Admin) |
+| GET | `/api/admin/shortage-risk` | Get shortage risk | Yes (Admin) |
+| POST | `/api/admin/campaign` | Send campaign | Yes (Admin) |
 
 ## 🤖 ML Model Integration
 
-The Python ML model (`ml/predict_shortage.py`) uses inventory and donor data to predict blood shortages.
+The system includes two ML models:
+
+1. **Blood Shortage Prediction** (`ml/predict_shortage.py`)
+   - Predicts blood shortages based on inventory and donor data
+   - Uses trained model (`shortage_prediction_model.pkl`) or rule-based fallback
+   - Returns probability scores for each blood type
+
+2. **Donor Availability Prediction** (`ml/predict_donor_availability.py`)
+   - Predicts when donors will be available for next donation
+   - Uses KNBTS rules (3 months for men, 4 months for women)
+   - Requires minimum 2 donations for prediction
 
 ### How it Works
 
@@ -315,14 +381,9 @@ The Python ML model (`ml/predict_shortage.py`) uses inventory and donor data to 
 5. Results are saved to database and alerts are created
 6. Email notifications are sent for predicted shortages
 
-### Prediction Algorithm
+### ML Model Setup
 
-Current implementation uses rule-based logic:
-- Critical shortage: < 5 units (95% probability)
-- Low stock: 5-10 units (75% probability)
-- Moderate risk: 10-20 units with few donors (60% probability)
-
-**This can be replaced with actual ML models** (scikit-learn, TensorFlow, etc.)
+See `ML_MODEL_SETUP.md` for instructions on setting up the ML model.
 
 ## 📧 Email Alerts
 
@@ -331,6 +392,7 @@ The system automatically sends email alerts for:
 1. **Low Stock**: When inventory falls below threshold (default: 10 units)
 2. **Expiring Blood**: Items expiring within specified days (default: 3 days)
 3. **Predicted Shortages**: When ML model predicts shortage
+4. **Donation Reminders**: Scheduled donation reminders
 
 ### Alert Schedule
 
@@ -338,77 +400,24 @@ The system automatically sends email alerts for:
 - Configurable via `ALERT_CRON_SCHEDULE` in .env
 - Format: Cron expression (e.g., `0 */6 * * *`)
 
-### Manual Alert Check
-
-You can trigger manual checks by calling the scheduler function directly.
-
 ## 🌐 Frontend Integration
 
-### React + Axios Setup
+The frontend is built with React + TypeScript and uses:
 
-**1. Install Axios in your React project**
+- **Axios** for API calls
+- **React Router** for navigation
+- **Shadcn/UI** for components
+- **Recharts** for data visualization
+- **Sonner** for toast notifications
 
-```bash
-npm install axios
-```
+### Key Features
 
-**2. Create API service file** (`src/services/api.js`)
-
-```javascript
-import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:5000/api';
-
-const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
-
-// Add JWT token to requests
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
-
-export default api;
-```
-
-**3. Use in React components**
-
-```javascript
-import api from './services/api';
-
-// Login
-const handleLogin = async (email, password) => {
-  const res = await api.post('/auth/login', { email, password });
-  localStorage.setItem('token', res.data.data.token);
-};
-
-// Get Donors
-const fetchDonors = async () => {
-  const res = await api.get('/donors');
-  setDonors(res.data.data);
-};
-
-// Add Donation
-const addDonation = async (donationData) => {
-  await api.post('/donations', donationData);
-};
-
-// Run Prediction
-const runPrediction = async () => {
-  const res = await api.post('/predict-shortage');
-  alert(res.data.message);
-};
-```
+- **Protected Routes**: Authentication required for all pages
+- **Real-time Data**: Fetches live data from backend
+- **Responsive Design**: Works on mobile and desktop
+- **Dark Mode**: Toggle between light and dark themes
+- **Admin Dashboard**: Comprehensive analytics for admins
+- **Staff Dashboard**: Simplified view for staff members
 
 ## 🐛 Troubleshooting
 
@@ -423,10 +432,12 @@ const runPrediction = async () => {
 - Verify Gmail credentials
 - Check if App Password is used (not regular password)
 - Ensure 2FA is enabled on Google account
+- See `backend/EMAIL_SETUP_GUIDE.md`
 
 ### Python Model Error
 
 - Verify Python is installed: `python --version` or `python3 --version`
+- Install Python dependencies: `pip install -r backend/ml/requirements.txt`
 - Check Python script path in `utils/runPythonModel.js`
 - Update spawn command if using `python3` instead of `python`
 
@@ -436,12 +447,19 @@ Change PORT in `.env` file or kill process using the port:
 
 ```bash
 # Windows
-netstat -ano | findstr :5000
+netstat -ano | findstr :5001
 taskkill /PID <PID> /F
 
 # Linux/Mac
-lsof -ti:5000 | xargs kill
+lsof -ti:5001 | xargs kill
 ```
+
+### Frontend Not Loading
+
+- Check if backend is running on port 5001
+- Verify `VITE_API_URL` in `.env` matches backend URL
+- Check browser console for errors
+- Ensure CORS is enabled in backend
 
 ## 📝 License
 
@@ -462,4 +480,3 @@ For issues or questions, please create an issue in the repository.
 ---
 
 **Made with ❤️ for better blood donation management**
-
