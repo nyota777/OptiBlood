@@ -7,11 +7,11 @@
 
 ---
 
-# 🩸 OptiBlood - Blood Donation Management System
+#  OptiBlood - Blood Donation Management System
 
 Complete full-stack blood donation and shortage prediction system with ML integration, admin dashboard, donor management, and real-time predictions.
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -25,30 +25,30 @@ Complete full-stack blood donation and shortage prediction system with ML integr
 - [Email Alerts](#email-alerts)
 - [Frontend Integration](#frontend-integration)
 
-## ✨ Features
+##  Features
 
 ### Backend Features
-- ✅ **Full CRUD Operations** for donors, donations, inventory, predictions, and alerts
-- 🔐 **JWT Authentication** with bcrypt password hashing
-- 🤖 **Machine Learning Integration** for blood shortage predictions
-- 📧 **Email Notifications** for low stock and expiring inventory
-- ⏰ **Scheduled Tasks** using node-cron for automatic alerts
-- 📊 **PostgreSQL Database** with Sequelize ORM
-- 🔄 **Real-time Updates** ready for React frontend
-- 🌐 **CORS Enabled** for seamless frontend integration
-- 👥 **Admin Dashboard** with comprehensive analytics
-- 📈 **Donor Availability Prediction** using KNBTS rules
+-  **Full CRUD Operations** for donors, donations, inventory, predictions, and alerts
+-  **JWT Authentication** with bcrypt password hashing
+-  **Machine Learning Integration** for blood shortage predictions
+-  **Email Notifications** for low stock and expiring inventory
+-  **Scheduled Tasks** using node-cron for automatic alerts
+-  **PostgreSQL Database** with Sequelize ORM
+-  **Real-time Updates** ready for React frontend
+-  **CORS Enabled** for seamless frontend integration
+-  **Admin Dashboard** with comprehensive analytics
+-  **Donor Availability Prediction** using KNBTS rules
 
 ### Frontend Features
-- 🎨 **Modern UI** with React + TypeScript + Vite
-- 📱 **Fully Responsive** design
-- 🌓 **Dark Mode** support
-- 📊 **Real-time Charts** and analytics
-- 🔔 **Toast Notifications** for user feedback
-- 🛡️ **Protected Routes** with authentication
-- 📧 **Email Management** interface
-- 📅 **Donation Scheduling** system
-- ⚙️ **Settings & Profile** management
+- **Modern UI** with React + TypeScript + Vite
+- **Fully Responsive** design
+- **Dark Mode** support
+- **Real-time Charts** and analytics
+- **Toast Notifications** for user feedback
+- **Protected Routes** with authentication
+- **Email Management** interface
+- **Donation Scheduling** system
+- **Settings & Profile** management
 
 ## 🛠️ Tech Stack
 
@@ -72,7 +72,7 @@ Complete full-stack blood donation and shortage prediction system with ML integr
 - **Notifications**: Sonner
 - **Routing**: React Router
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 optiblood-system-ui/
@@ -137,7 +137,7 @@ optiblood-system-ui/
 └── README.md                      # This file
 ```
 
-## 📦 Installation
+## Installation
 
 ### Prerequisites
 
@@ -220,7 +220,7 @@ Create a `.env` file in the root directory:
 VITE_API_URL=http://localhost:5001/api
 ```
 
-### 📧 Gmail Setup for Email Notifications
+### Gmail Setup for Email Notifications
 
 To use Gmail for sending emails:
 
@@ -233,7 +233,7 @@ To use Gmail for sending emails:
 
 See `backend/EMAIL_SETUP_GUIDE.md` for detailed instructions.
 
-## 🗄️ Database Setup
+## Database Setup
 
 ### Option 1: Quick Setup (PostgreSQL running locally)
 
@@ -262,7 +262,7 @@ GRANT ALL PRIVILEGES ON DATABASE optiblood_db TO optiblood_user;
 
 Update the database credentials in `.env` file to match your existing setup.
 
-## 🚀 Running the Application
+## Running the Application
 
 ### Development Mode
 
@@ -400,7 +400,7 @@ The system automatically sends email alerts for:
 - Configurable via `ALERT_CRON_SCHEDULE` in .env
 - Format: Cron expression (e.g., `0 */6 * * *`)
 
-## 🌐 Frontend Integration
+## Frontend Integration
 
 The frontend is built with React + TypeScript and uses:
 
@@ -419,7 +419,7 @@ The frontend is built with React + TypeScript and uses:
 - **Admin Dashboard**: Comprehensive analytics for admins
 - **Staff Dashboard**: Simplified view for staff members
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Database Connection Error
 
@@ -461,11 +461,11 @@ lsof -ti:5001 | xargs kill
 - Check browser console for errors
 - Ensure CORS is enabled in backend
 
-## 📝 License
+## License
 
 MIT License - Feel free to use this project for your needs.
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create feature branch
@@ -473,7 +473,7 @@ MIT License - Feel free to use this project for your needs.
 4. Push to branch
 5. Open pull request
 
-## 📞 Support
+## Support
 
 For issues or questions, please create an issue in the repository.
 
