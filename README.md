@@ -62,19 +62,6 @@ For the **Blood Shortage Forecasting Module**, I used a synthetic dataset contai
 
 This dataset was generated using **Python** and the **Faker library**, ensuring realistic but entirely fictional donor information. It is safe for public use and does not include any real individuals.
 
-###  Dataset Details
-- **Instances:** 10,000 synthetic donor records  
-- **Features:**
-  - Full Name  
-  - Contact Number  
-  - Email  
-  - Blood Group  
-  - City  
-  - Availability Status  
-  - Donation History  
-  - Date of Entry  
-- **Purpose:** Designed for practicing CRUD operations, backend development (e.g., PHP/MySQL), donor search tools, healthcare management systems, and data cleaning/analytics exercises.
-
 ###  Why This Dataset Was Used
 - Provides a **large-scale dataset** suitable for simulating real-world blood bank operations.  
 - Enables testing of **inventory forecasting models** (e.g., Auto-ARIMA) under realistic but controlled conditions.  
