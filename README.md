@@ -7,9 +7,82 @@
 
 ---
 
-#  OptiBlood - Blood Donation Management System
+OptiBlood is an intelligent machine learning system designed to improve blood bank operations by **forecasting donor availability** and **predicting blood shortages**. The project addresses a critical gap in healthcare: the lack of proactive, data-driven tools to manage blood supply and donor engagement. By leveraging **XGBoost regression** and **Auto-ARIMA time-series forecasting**, OptiBlood provides actionable insights, automated alerts, and realistic risk scores that empower hospitals and blood centers to plan ahead, reduce shortages, and save lives. The system integrates donor behavior prediction with inventory forecasting, offering a comprehensive solution for sustainable blood management.
 
-Complete full-stack blood donation and shortage prediction system with ML integration, admin dashboard, donor management, and real-time predictions.
+---
+
+#  System Modules
+
+## 1. Donor Availability Forecasting Module
+This module predicts **when individual donors are likely to donate again** based on their historical behavior.  
+- **Model Used:** XGBoost Regressor with Borderline SMOTE for handling class imbalance.  
+- **Features:** Recency (months since last donation), Frequency (total donations), and Time (months since first donation).  
+- **Evaluation Metrics:**  
+  - Mean Absolute Error (MAE): 20.33 days → average prediction error  
+  - R² Score: 0.997 → explains 99.7% of variance in donor timing  
+- **Impact:** Provides donor-specific predictions that enable targeted outreach, efficient scheduling, and improved donor retention.
+
+---
+
+## 2. Blood Shortage Forecasting Module
+This module forecasts **monthly demand for each blood type** and compares it against current stock levels to predict shortages.  
+- **Model Used:** Auto-ARIMA (automated time-series forecasting) combined with rule-based risk scoring.  
+- **Features:** Historical donation trends, current inventory levels, and safety buffer thresholds.  
+- **Evaluation Metrics:**  
+  - Shortage Probability Score (percentile-based risk measure)  
+  - Confusion Matrix (simulated real-world validation, ~86% accuracy)  
+- **Impact:** Generates realistic risk scores, identifies critical blood types, and triggers automated alerts (e.g., staff notifications, donor emails) to prevent emergencies.
+
+# Dataset Description – Donor Availability Forecasting
+
+For the **Donor Availability Forecasting Module**, I used the [Blood Transfusion Service Center Dataset](https://www.kaggle.com/datasets/shlokraval/blood-transfusion-service-center-data-set) authored by **Shlok Raval**.  
+
+This dataset contains information on **748 blood donors** collected by the Blood Transfusion Service Center in Hsin-Chu City, Taiwan. It was originally designed to predict whether a donor would donate blood again in March 2007 using the **RFMTC model** (a modified version of the classic Recency–Frequency–Monetary model).  
+
+### Dataset Details
+- **Format:** Originally in `.arff`, converted to `.csv` for compatibility  
+- **Instances:** 748 records with no missing values  
+- **Features:**
+  - **Recency:** Months since the last donation  
+  - **Frequency:** Total number of donations  
+  - **Monetary:** Total blood donated (in c.c.)  
+  - **Time:** Months since the first donation  
+  - **Target:** Binary variable (1 = donated in March 2007, 0 = did not donate)  
+
+### Why This Dataset Was Used
+- It provides **clean, structured donor behavior data** with no missing values.  
+- The features (Recency, Frequency, Time) align directly with the **predictive needs of OptiBlood**, enabling the system to forecast **when donors are likely to donate again**.  
+- Its behavioral focus makes it ideal for building a **regression model** that estimates donor availability in days, supporting proactive donor engagement and scheduling.  
+
+This dataset forms the foundation of the donor forecasting module, allowing OptiBlood to move beyond static thresholds and into **data-driven donor availability prediction**.
+
+# Dataset Description – Blood Shortage Forecasting
+
+For the **Blood Shortage Forecasting Module**, I used a synthetic dataset containing **10,000 blood donor records** created for educational, development, and demo purposes.  
+
+This dataset was generated using **Python** and the **Faker library**, ensuring realistic but entirely fictional donor information. It is safe for public use and does not include any real individuals.
+
+###  Dataset Details
+- **Instances:** 10,000 synthetic donor records  
+- **Features:**
+  - Full Name  
+  - Contact Number  
+  - Email  
+  - Blood Group  
+  - City  
+  - Availability Status  
+  - Donation History  
+  - Date of Entry  
+- **Purpose:** Designed for practicing CRUD operations, backend development (e.g., PHP/MySQL), donor search tools, healthcare management systems, and data cleaning/analytics exercises.
+
+###  Why This Dataset Was Used
+- Provides a **large-scale dataset** suitable for simulating real-world blood bank operations.  
+- Enables testing of **inventory forecasting models** (e.g., Auto-ARIMA) under realistic but controlled conditions.  
+- Supports the development of **alert systems and dashboards** without privacy concerns, since all data is synthetic.  
+- Ensures scalability by mimicking the complexity of actual donor databases, making it ideal for forecasting **blood shortages across multiple blood types**.
+
+This dataset forms the foundation of the blood shortage forecasting module, allowing OptiBlood to simulate inventory risks and generate proactive alerts for healthcare staff.
+
 
 ##  Table of Contents
 
