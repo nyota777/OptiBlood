@@ -17,7 +17,8 @@ OptiBlood is an intelligent machine learning system designed to improve blood ba
 This module predicts **when individual donors are likely to donate again** based on their historical behavior.  
 - **Model Used:** XGBoost Regressor with Borderline SMOTE for handling class imbalance.  
 - **Features:** Recency (months since last donation), Frequency (total donations), and Time (months since first donation).  
-- **Evaluation Metrics:**  
+- **Evaluation Metrics:**
+-- Accuracy of ~74% 
   - Mean Absolute Error (MAE): 20.33 days → average prediction error  
   - R² Score: 0.997 → explains 99.7% of variance in donor timing  
 - **Impact:** Provides donor-specific predictions that enable targeted outreach, efficient scheduling, and improved donor retention.
