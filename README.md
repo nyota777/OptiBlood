@@ -15,7 +15,7 @@ OptiBlood is an intelligent machine learning system designed to improve blood ba
 
 ## 1. Donor Availability Forecasting Module
 This module predicts **when individual donors are likely to donate again** based on their historical behavior.  
-- **Model Used:** XGBoost Regressor with Borderline SMOTE for handling class imbalance.  
+- **Model Used:** XGBoost Regressor with Borderline SMOTE for handling class imbalance.  I used XGBoost because it handles non-linear relationships and feature interactions well. I
 - **Features:** Recency (months since last donation), Frequency (total donations), and Time (months since first donation).  
 - **Evaluation Metrics:**
 -- Accuracy of ~74% 
@@ -27,7 +27,7 @@ This module predicts **when individual donors are likely to donate again** based
 
 ## 2. Blood Shortage Forecasting Module
 This module forecasts **monthly demand for each blood type** and compares it against current stock levels to predict shortages.  
-- **Model Used:** Auto-ARIMA (automated time-series forecasting) combined with rule-based risk scoring.  
+- **Model Used:** Auto-ARIMA (automated time-series forecasting) combined with rule-based risk scoring.  ARIMA selects the best-time series model for each blood type's donaiton history. 
 - **Features:** Historical donation trends, current inventory levels, and safety buffer thresholds.  
 - **Evaluation Metrics:**  
   - Shortage Probability Score (percentile-based risk measure)  
